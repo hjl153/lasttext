@@ -2,4 +2,14 @@
     <string name="app_name">TEXT</string>
     <string name="login">login</string>
     <string name="enter">enter</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="forget">forget</string>
+    <string name="agpassword">adpassword</string>
+    <string name="daka">daka</string>
+    <string name="source">souce</string>
+    <string name="money">money</string>
+    <string name="plan">plan</string>
+    <string name="work">work</string>
+    <string name="back">back</string>
 </resources>

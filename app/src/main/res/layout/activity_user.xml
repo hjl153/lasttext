@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        app:srcCompat="@mipmap/g" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="163dp"
+        android:layout_height="121dp"
+        app:srcCompat="@mipmap/c" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="624dp"
+        android:layout_toEndOf="@+id/imageView"
+        android:text="@string/username"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/souce"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="40dp"
+        android:background="@android:color/holo_blue_bright"
+        android:text="@string/source"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/work"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/plan"
+        android:layout_marginTop="26dp"
+        android:background="@android:color/holo_blue_bright"
+        android:text="@string/work"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/plan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/money"
+        android:layout_marginTop="26dp"
+        android:background="@android:color/holo_blue_bright"
+        android:text="@string/plan"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/money"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/souce"
+        android:layout_marginTop="26dp"
+        android:background="@android:color/holo_blue_bright"
+        android:text="@string/money"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/back3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        android:background="@android:color/holo_blue_bright"
+        android:text="@string/back"
+        android:textSize="36sp" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="101dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginBottom="583dp"
+        android:layout_toEndOf="@+id/imageView"
+        app:srcCompat="@android:drawable/checkbox_on_background" />
+
+</RelativeLayout>

@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="60dp"
+        android:layout_marginLeft="80dp"
         android:layout_marginTop="300dp"
         android:layout_marginBottom="498dp"
         android:text="@string/username"
@@ -47,6 +47,17 @@
         android:text="@string/password"
         android:textSize="24sp" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="330dp"
+        android:text="@string/agpassword"
+        android:textSize="24sp" />
+
     <EditText
         android:id="@+id/password"
         android:layout_width="225dp"
@@ -60,26 +71,26 @@
         android:inputType="textPassword" />
 
 
-    <Button
-        android:id="@+id/enter"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/agpassword"
+        android:layout_width="225dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="101dp"
-        android:layout_marginBottom="331dp"
-        android:backgroundTint="@android:color/primary_text_dark"
-        android:text="@string/enter"
-        android:textSize="18sp" />
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="322dp"
+        android:layout_toEndOf="@+id/textView3"
+        android:ems="10"
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/logina"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="47dp"
-        android:layout_marginBottom="332dp"
-        android:layout_toEndOf="@+id/enter"
+        android:layout_marginEnd="148dp"
+        android:layout_marginBottom="261dp"
         android:backgroundTint="@android:color/primary_text_dark"
         android:text="@string/login"
         android:textSize="18sp" />
@@ -93,7 +104,7 @@
         android:layout_marginEnd="160dp"
         android:layout_marginBottom="600dp"
         android:gravity="center"
-        android:text="@string/enter"
+        android:text="@string/login"
         android:textSize="30sp" />
 
 </RelativeLayout>
