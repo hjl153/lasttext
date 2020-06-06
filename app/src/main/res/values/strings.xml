@@ -15,4 +15,30 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="myplan">mypan</string>
+    <string name="learnplan">learnplan</string>
+    <string name="lifeplan">lifeplan</string>
+    <string name="wrightplan">wrightplan</string>
+    <string name="seeplan">seeplan</string>
+    <string name="wrightbeiwangkl">wrightbeiwanglu</string>
+    <string name="mybeiwanglu">mybeiwanglu</string>
+    <string name="jizhang">jizhang</string>
+    <string name="jname">jname</string>
+    <string name="jdata">jdata</string>
+    <string name="danjia">danjia</string>
+    <string name="shuliang">shuliang</string>
+    <string name="leibie">leibie</string>
+    <string name="zhushi">zhushi</string>
+    <string name="putzhushi">putzhushi</string>
+    <string name="seezhangdan">seezhangdan</string>
+    <string name="leib">lieb</string>
+    <string name="jin">jin</string>
+    <string name="chu">chu</string>
+    <string name="shenghuofei">shf</string>
+    <string name="last">last</string>
+    <string name="changeshf">changesfc</string>
+    <string name="shfshangxian">shangchuiassc</string>
+    <string name="input">input</string>
+    <string name="change">change</string>
+    <string name="changename">changename</string>
 </resources>

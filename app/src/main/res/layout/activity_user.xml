@@ -17,7 +17,9 @@
         android:id="@+id/imageView"
         android:layout_width="163dp"
         android:layout_height="121dp"
-        app:srcCompat="@mipmap/c" />
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        app:srcCompat="@mipmap/ic_launcher_round" />
 
     <TextView
         android:id="@+id/textView8"
@@ -92,6 +94,7 @@
         android:layout_marginStart="42dp"
         android:layout_marginBottom="583dp"
         android:layout_toEndOf="@+id/imageView"
+        android:backgroundTint="@color/colorPrimary"
         app:srcCompat="@android:drawable/checkbox_on_background" />
 
 </RelativeLayout>
