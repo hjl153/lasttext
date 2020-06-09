@@ -50,7 +50,7 @@
         android:textSize="24sp" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/zpassword"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -72,11 +72,12 @@
         android:layout_marginStart="101dp"
         android:layout_marginBottom="331dp"
         android:backgroundTint="@android:color/primary_text_dark"
+        android:onClick="onClick"
         android:text="@string/enter"
         android:textSize="18sp" />
 
     <Button
-        android:id="@+id/logina"
+        android:id="@+id/Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -84,6 +85,7 @@
         android:layout_marginBottom="332dp"
         android:layout_toEndOf="@+id/enter"
         android:backgroundTint="@android:color/primary_text_dark"
+        android:onClick="onClick"
         android:text="@string/login"
         android:textSize="18sp" />
 
