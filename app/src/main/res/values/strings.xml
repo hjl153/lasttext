@@ -41,4 +41,7 @@
     <string name="input">input</string>
     <string name="change">change</string>
     <string name="changename">changename</string>
+    <string name="jihualeibie">jihualeibie</string>
+    <string name="jiahuadetail">jihuadetail</string>
+    <string name="beiwangludetail">beiwangludetail</string>
 </resources>
