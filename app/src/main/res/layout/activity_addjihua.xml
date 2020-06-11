@@ -4,13 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/m"
     tools:context=".MainActivity">
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@mipmap/m" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -21,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="158dp"
+            android:layout_marginEnd="100dp"
             android:layout_marginBottom="531dp"
             android:gravity="center"
             android:text="@string/myplan"
@@ -39,19 +34,16 @@
             android:textColor="@android:color/background_light"
             android:textSize="24sp" />
 
-        <EditText
-            android:id="@+id/editText7"
-            android:layout_width="wrap_content"
-            android:layout_height="185dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="51dp"
-            android:layout_marginEnd="78dp"
-            android:layout_marginBottom="262dp"
-            android:layout_toEndOf="@+id/textView15"
-            android:ems="10"
-            android:hint="@string/putzhushi"
-            android:inputType="text" />
+       <EditText
+           android:id="@+id/beizhu2"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentEnd="true"
+           android:layout_alignParentBottom="true"
+           android:layout_marginEnd="0dp"
+           android:layout_marginBottom="0dp"
+           android:background="@color/colorPrimary"
+           android:text="@string/seezhangdan"/>
 
         <Button
             android:id="@+id/button3"
@@ -73,6 +65,7 @@
             android:layout_marginEnd="162dp"
             android:layout_marginBottom="145dp"
             android:background="@color/colorPrimary"
+            android:onClick="onClick"
             android:text="@string/input" />
 
         <TextView
@@ -87,27 +80,34 @@
             android:textColor="@android:color/background_light"
             android:textSize="24sp" />
 
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="209dp"
-            android:layout_marginBottom="220dp"
-            android:text="@string/learnplan"
-            android:textColor="@android:color/background_light" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="415dp"
+            android:layout_marginLeft="150dp"
+            android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/radioButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="68dp"
-            android:layout_marginBottom="220dp"
-            android:text="@string/lifeplan"
-            android:textColor="@android:color/background_light" />
+            <RadioGroup
+                android:id="@+id/plan1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/learn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/learnplan"
+                    android:textColor="@android:color/background_light" />
+
+                <RadioButton
+                    android:id="@+id/life"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lifeplan"
+                    android:textColor="@android:color/background_light" />
+            </RadioGroup>
+        </LinearLayout>
 
     </RelativeLayout>
 </RelativeLayout>

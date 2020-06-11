@@ -2,7 +2,6 @@ package com.example.text;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -11,11 +10,17 @@ import android.database.sqlite.SQLiteDatabase;
 public class DBManger {
 
     private DBHelper dbHelper;
-    private String TBNAME;
+    private  String TBNAME;
+    public   String  JTB_NAME;
+    public   String  BTB_NAME;
+    public   String MTB_NAME;
 
     public DBManger(Context context) {
         dbHelper = new DBHelper(context);
         TBNAME = DBHelper.TB_NAME;
+        JTB_NAME = DBHelper.JTB_NAME;
+        BTB_NAME = DBHelper.BTB_NAME;
+        MTB_NAME = DBHelper.MTB_NAME;
     }
 
     public void add(Useritem item){
@@ -26,7 +31,23 @@ public class DBManger {
         db.insert(TBNAME, null, values);
         db.close();
     }
-
+    public void addJ(jihuaitem item){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("JDATE", item.getJdate());
+        values.put("JCONTEXT", item.getJcontext());
+        values.put("JLEIBIE", item.getJleibie());
+        db.insert(TBNAME, null, values);
+        db.close();
+    }
+    public void addB(beiwangluitem item){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("BDATE", item.getBdate());
+        values.put("BCONTEXT", item.getBcontext());
+        db.insert(TBNAME, null, values);
+        db.close();
+    }
     public void addAll(List<Useritem> list){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         for (Useritem item : list) {

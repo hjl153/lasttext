@@ -14,7 +14,6 @@
     <string name="back">back</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="myplan">mypan</string>
     <string name="learnplan">learnplan</string>
     <string name="lifeplan">lifeplan</string>
@@ -44,4 +43,11 @@
     <string name="jihualeibie">jihualeibie</string>
     <string name="jiahuadetail">jihuadetail</string>
     <string name="beiwangludetail">beiwangludetail</string>
+    <string name="food">food</string>
+    <string name="cloth">cloth</string>
+    <string name="learning">learning</string>
+    <string name="shenghjuo">shenghuo</string>
+    <string name="year">year</string>
+    <string name="month">month</string>
+    <string name="day">day</string>
 </resources>

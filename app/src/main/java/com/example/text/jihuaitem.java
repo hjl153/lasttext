@@ -14,7 +14,7 @@ public class jihuaitem {
         this.Jcontext = "";
     }
 
-    public jihuaitem(String Jdate, int Jleibie,String Jcontext) {
+    public jihuaitem(String Jdate,String Jcontext,int Jleibie) {
         super();
         this.Jdate = Jdate;
         this.Jleibie = Jleibie;

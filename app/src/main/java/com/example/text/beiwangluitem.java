@@ -9,8 +9,7 @@ public class beiwangluitem {
         this.Bdate = "";
         this.Bcontext = "";
     }
-    public beiwangluitem(int id, String bdate, String bcontext) {
-        this.id = id;
+    public beiwangluitem( String bdate, String bcontext) {
         Bdate = bdate;
         Bcontext = bcontext;
     }

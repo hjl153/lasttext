@@ -39,4 +39,14 @@
     <string name="shfshangxian">请输入每月生活费上限</string>
     <string name="change">修改</string>
     <string name="changename">请输入修改后昵称</string>
+    <string name="beiwangludetail">备忘录明细</string>
+    <string name="jiahuadetail">计划内容</string>
+    <string name="jihualeibie">计划类别</string>
+    <string name="cloth">服装支出</string>
+    <string name="food">食品支出</string>
+    <string name="learning">学习支出</string>
+    <string name="shenghjuo">日用支出</string>
+    <string name="day">日</string>
+    <string name="month">月</string>
+    <string name="year">年</string>
 </resources>
