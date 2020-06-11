@@ -19,7 +19,7 @@ public class jizhangitem {
         this.Zhushui = "";
         this.Mtype = 0;
     }
-    public jizhangitem(int id, String mname, String mdate, float mprice, int shuliang, String mleibie, String zhushui, int mtype) {
+    public jizhangitem( String mname, String mdate, float mprice, int shuliang, String mleibie, String zhushui, int mtype) {
         this.id = id;
         Mname = mname;
         Mdate = mdate;

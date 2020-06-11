@@ -48,6 +48,19 @@ public class DBManger {
         db.insert(TBNAME, null, values);
         db.close();
     }
+    public void addC(jizhangitem item){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("MNAME", item.getMname());
+        values.put("MDATE", item.getMdate());
+        values.put("MPRICE", item.getMprice());
+        values.put("SHULIANG", item.getShuliang());
+        values.put("MLEIBIE", item.getMleibie());
+        values.put("ZHUSHI", item.getZhushui());
+        values.put("MTYPE", item.getMtype());
+        db.insert(TBNAME, null, values);
+        db.close();
+    }
     public void addAll(List<Useritem> list){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         for (Useritem item : list) {
