@@ -50,4 +50,7 @@
     <string name="year">year</string>
     <string name="month">month</string>
     <string name="day">day</string>
+    <string name="nodata">nodata</string>
+    <string name="seebei">seebei</string>
+    <string name="putbeiwang">putbeiwanglu</string>
 </resources>

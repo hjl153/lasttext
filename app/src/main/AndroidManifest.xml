@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".addbeiwanglu"></activity>
+        <activity android:name=".jihualist"></activity>
+        <activity android:name=".beiwanglist" />
+        <activity android:name=".addbeiwanglu" />
         <activity android:name=".addjihua" />
         <activity android:name=".source" />
         <activity android:name=".zichan" />

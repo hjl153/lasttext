@@ -43,11 +43,11 @@ public class addjihua extends AppCompatActivity {
                         RadioButton choise = (RadioButton) findViewById(id);
                         String output = choise.getText().toString();
                         if (output.equals("lifeplan")) {
-                            type = 0;
+                            type = 1;
                             Log.i("tag", "写入据完毕");
 
                         } else if(output.equals("learnplan")){
-                            type = 1;
+                            type = 0;
                             Log.i("tag", "写入数完毕");
 
                         }
@@ -55,6 +55,7 @@ public class addjihua extends AppCompatActivity {
                 DBManger dbManager = new DBManger(addjihua.this);
                 jihuaitem jhua=new jihuaitem(today_sdr,Beizhu,type);
                 dbManager.addJ(jhua);
+                Log.i("tag", today_sdr);
                 Toast.makeText(this, "提交完成", Toast.LENGTH_SHORT).show();
             }
 

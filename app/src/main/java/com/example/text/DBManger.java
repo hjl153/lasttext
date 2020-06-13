@@ -37,7 +37,7 @@ public class DBManger {
         values.put("JDATE", item.getJdate());
         values.put("JCONTEXT", item.getJcontext());
         values.put("JLEIBIE", item.getJleibie());
-        db.insert(TBNAME, null, values);
+        db.insert(JTB_NAME, null, values);
         db.close();
     }
     public void addB(beiwangluitem item){
@@ -45,7 +45,7 @@ public class DBManger {
         ContentValues values = new ContentValues();
         values.put("BDATE", item.getBdate());
         values.put("BCONTEXT", item.getBcontext());
-        db.insert(TBNAME, null, values);
+        db.insert(BTB_NAME, null, values);
         db.close();
     }
     public void addC(jizhangitem item){
@@ -58,7 +58,7 @@ public class DBManger {
         values.put("MLEIBIE", item.getMleibie());
         values.put("ZHUSHI", item.getZhushui());
         values.put("MTYPE", item.getMtype());
-        db.insert(TBNAME, null, values);
+        db.insert(MTB_NAME, null, values);
         db.close();
     }
     public void addAll(List<Useritem> list){
@@ -81,6 +81,16 @@ public class DBManger {
     public void delete(int id){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.delete(TBNAME, "ID=?", new String[]{String.valueOf(id)});
+        db.close();
+    }
+    public void deleteB(int id){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.delete(BTB_NAME, "id=?", new String[]{String.valueOf(id)});
+        db.close();
+    }
+    public void deleteJ(int id){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.delete(JTB_NAME, "id=?", new String[]{String.valueOf(id)});
         db.close();
     }
 
@@ -113,7 +123,63 @@ public class DBManger {
         return rateList;
 
     }
+    public List<beiwangluitem> listAllB(){
+        List<beiwangluitem> BList = null;
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(BTB_NAME, null, null, null, null, null, null);
+        if(cursor!=null){
+            BList = new ArrayList<beiwangluitem>();
+            while(cursor.moveToNext()){
+                beiwangluitem item = new beiwangluitem();
+                item.setId(cursor.getInt(cursor.getColumnIndex("ID")));
+                item.setBcontext(cursor.getString(cursor.getColumnIndex("BCONTEXT")));
+                item.setBdate(cursor.getString(cursor.getColumnIndex("BDATE")));
+                BList.add(item);
+            }
+            cursor.close();
+        }
+        db.close();
+        return BList;
 
+    }
+    public List<jihuaitem> listAllJ(){
+        List<jihuaitem> JList = null;
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(JTB_NAME, null, null, null, null, null, null);
+        if(cursor!=null){
+            JList = new ArrayList<jihuaitem>();
+            while(cursor.moveToNext()){
+                jihuaitem item = new jihuaitem();
+                item.setId(cursor.getInt(cursor.getColumnIndex("ID")));
+                item.setJdate(cursor.getString(cursor.getColumnIndex("JDATE")));
+                item.setJcontext(cursor.getString(cursor.getColumnIndex("JCONTEXT")));
+                item.setJleibie(cursor.getInt(cursor.getColumnIndex("JLEIBIE")));
+                JList.add(item);
+            }
+            cursor.close();
+        }
+        db.close();
+        return JList;
+
+    }
+    public List<jihuaitem> listAllJSear(int i,String date){
+        List<jihuaitem> JList = null;
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(JTB_NAME,null, "JLEIBIE=? and JDATE=?", new String[]{String.valueOf(i),String.valueOf(date)}, null, null, null, null);
+        if(cursor!=null){
+            JList = new ArrayList<jihuaitem>();
+            while(cursor.moveToNext()){
+                jihuaitem item = new jihuaitem();
+                item.setId(cursor.getInt(cursor.getColumnIndex("ID")));
+                item.setJcontext(cursor.getString(cursor.getColumnIndex("JCONTEXT")));
+                JList.add(item);
+            }
+            cursor.close();
+        }
+        db.close();
+        return JList;
+
+    }
     public Boolean findById(String name,String password){
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.query(TBNAME, null, "username=?", new String[]{String.valueOf(name)}, null, null, null);

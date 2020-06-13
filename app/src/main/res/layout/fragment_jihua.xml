@@ -34,11 +34,19 @@
                 android:textSize="24sp" />
 
             <ListView
+                android:id="@+id/Learn"
                 android:layout_width="wrap_content"
                 android:layout_height="180dp">
 
             </ListView>
 
+            <TextView
+                android:id="@+id/nodata"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/nodata"
+                android:textSize="30sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -56,10 +64,19 @@
                 android:textSize="24sp" />
 
             <ListView
+                android:id="@+id/Life"
                 android:layout_width="wrap_content"
                 android:layout_height="180dp">
 
             </ListView>
+
+            <TextView
+                android:id="@+id/nodata2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/nodata"
+                android:textSize="30sp" />
 
         </LinearLayout>
 
@@ -89,6 +106,7 @@
                 android:textColor="@android:color/background_light"
                 android:textSize="24sp"
                 />
+
         </LinearLayout>
 
     </LinearLayout>

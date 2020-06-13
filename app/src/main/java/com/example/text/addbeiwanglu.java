@@ -40,11 +40,11 @@ public class addbeiwanglu extends AppCompatActivity {
             } else if (Year.length() <= 0 && Month.length() <= 0 && Day.length() <= 0) {
                 Toast.makeText(this, "请输入日期", Toast.LENGTH_SHORT).show();
             }
-
+            else{
             DBManger dbManager = new DBManger(addbeiwanglu.this);
-            beiwangluitem Bhua = new beiwangluitem(year+"-"+month+"-"+day,Beizhu);
+            beiwangluitem Bhua = new beiwangluitem(Year+"-"+Month+"-"+Day,Beizhu);
             dbManager.addB(Bhua);
-            Toast.makeText(this, "提交完成", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "提交完成", Toast.LENGTH_SHORT).show();}
         }
 
     }
