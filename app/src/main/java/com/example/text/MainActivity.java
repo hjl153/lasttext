@@ -2,7 +2,9 @@ package com.example.text;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View btn){
         String Name=username.getText().toString();
         String Password=password.getText().toString();
+        SharedPreferences sp=getSharedPreferences("myname", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor=sp.edit();
+        editor.putString("name",Name);
+        editor.commit();
         Log.i("TAG",Name+Password);
         if(btn.getId()==R.id.enter) {
             if (Name.length() <= 0) {

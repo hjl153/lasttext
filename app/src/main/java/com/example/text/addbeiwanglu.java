@@ -42,7 +42,14 @@ public class addbeiwanglu extends AppCompatActivity {
             }
             else{
             DBManger dbManager = new DBManger(addbeiwanglu.this);
-            beiwangluitem Bhua = new beiwangluitem(Year+"-"+Month+"-"+Day,Beizhu);
+            if(Integer.parseInt(Month)<10){
+                Month="0"+Month;
+            }
+                if(Integer.parseInt(Day)<10){
+                    Day="0"+Day;
+                }
+
+            beiwangluitem Bhua = new beiwangluitem(Year+"_"+Month+"_"+Day,Beizhu);
             dbManager.addB(Bhua);
             Toast.makeText(this, "提交完成", Toast.LENGTH_SHORT).show();}
         }

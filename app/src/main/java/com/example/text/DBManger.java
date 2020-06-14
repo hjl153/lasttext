@@ -83,14 +83,14 @@ public class DBManger {
         db.delete(TBNAME, "ID=?", new String[]{String.valueOf(id)});
         db.close();
     }
-    public void deleteB(int id){
+    public void deleteB(String beizhu){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.delete(BTB_NAME, "id=?", new String[]{String.valueOf(id)});
+        db.delete(BTB_NAME, "BCONTEXT=?", new String[]{String.valueOf(beizhu)});
         db.close();
     }
     public void deleteJ(int id){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.delete(JTB_NAME, "id=?", new String[]{String.valueOf(id)});
+        db.delete(JTB_NAME, "ID=?", new String[]{String.valueOf(id)});
         db.close();
     }
 
@@ -162,16 +162,18 @@ public class DBManger {
         return JList;
 
     }
-    public List<jihuaitem> listAllJSear(int i,String date){
+    public List<jihuaitem> listAllJSear(int i){
         List<jihuaitem> JList = null;
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query(JTB_NAME,null, "JLEIBIE=? and JDATE=?", new String[]{String.valueOf(i),String.valueOf(date)}, null, null, null, null);
+        Cursor cursor = db.query(JTB_NAME,null, "JLEIBIE=?", new String[]{String.valueOf(i)}, null, null, null, null);
         if(cursor!=null){
             JList = new ArrayList<jihuaitem>();
             while(cursor.moveToNext()){
                 jihuaitem item = new jihuaitem();
                 item.setId(cursor.getInt(cursor.getColumnIndex("ID")));
+                item.setJdate(cursor.getString(cursor.getColumnIndex("JDATE")));
                 item.setJcontext(cursor.getString(cursor.getColumnIndex("JCONTEXT")));
+                item.setJleibie(cursor.getInt(cursor.getColumnIndex("JLEIBIE")));
                 JList.add(item);
             }
             cursor.close();

@@ -10,15 +10,14 @@ public class jihuaitem {
     public jihuaitem() {
         super();
         this.Jdate = "";
-        this.Jleibie=0;
         this.Jcontext = "";
     }
 
-    public jihuaitem(String Jdate,String Jcontext,int Jleibie) {
+    public jihuaitem(String jdate,String jcontext,int jleibie) {
         super();
-        this.Jdate = Jdate;
-        this.Jleibie = Jleibie;
-        this.Jcontext = Jcontext;
+        this.Jdate = jdate;
+        this.Jleibie = jleibie;
+        this.Jcontext = jcontext;
     }
 
     public int getId() {

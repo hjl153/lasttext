@@ -35,8 +35,8 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 public class jihua extends Fragment  {
 
     public ListView listViewLearn,listViewLife;
-    bAdapter Learnadapter,Lifeadapter;
-    List<Map<String, Object>> list;
+    JAdapter Learnadapter,Lifeadapter;
+    List<Map<String, Object>> learnlist,lifelist;
     String today_sdr;
     public jihua() {
         // Required empty public constructor
@@ -49,14 +49,14 @@ public class jihua extends Fragment  {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_beiwanglu2, container, false);
         View view= inflater.inflate(R.layout.fragment_jihua , container, false);
-        List<Map<String, Object>> Lifelist=getData(1);
-        List<Map<String, Object>> Learnlist=getData(0);
+        List<Map<String, Object>> Lifelist=getLifeData(1);
+        List<Map<String, Object>> Learnlist=getLearnData(0);
         listViewLearn = (ListView)view.findViewById(R.id.Learn);
         listViewLife= (ListView)view.findViewById(R.id.Life);
         listViewLearn.setEmptyView(view.findViewById(R.id.nodata));
         listViewLife.setEmptyView(view.findViewById(R.id.nodata2));
-        Learnadapter=new bAdapter(getActivity(),R.layout.fragment_jihua,Learnlist);
-        Lifeadapter=new bAdapter(getActivity(),R.layout.fragment_jihua,Lifelist);
+        Learnadapter=new JAdapter(getActivity(),R.layout.fragment_jihua,Learnlist);
+        Lifeadapter=new JAdapter(getActivity(),R.layout.fragment_jihua,Lifelist);
         listViewLearn.setAdapter(Learnadapter);
         listViewLife.setAdapter(Lifeadapter);
         Date today= Calendar.getInstance().getTime();
@@ -73,32 +73,51 @@ public class jihua extends Fragment  {
         Lifeadapter.notifyDataSetChanged();
     }
 
-    public List<Map<String, Object>> getData(int i) {
-        list = new ArrayList<Map<String, Object>>();
-        list = new ArrayList<Map<String, Object>>();
+    public List<Map<String, Object>> getLearnData(int i) {
+        learnlist = new ArrayList<Map<String, Object>>();
+        Log.i("tag", "getJdate()");
         DBManger dbManager = new DBManger(getActivity());
         if (i == 0) {
-            List<jihuaitem> testlist = dbManager.listAllJSear(i,today_sdr);
+            Log.i("tag", "m.getJdate()");
+            List<jihuaitem> testlist = dbManager.listAllJ();
             for (jihuaitem m : testlist) {
                 Map<String, Object> map = new HashMap<String, Object>();
-                map.put("id", m.getId());
-                map.put("ItemContext", m.getJcontext());
-                Log.i("tag", m.getJcontext());
-                Log.i("tag", m.getJdate());
-                list.add(map);
-            }
-        } else if (i == 1) {
-            List<jihuaitem> testlist = dbManager.listAllJSear(i,today_sdr);
-            for (jihuaitem m : testlist) {
-                Map<String, Object> map = new HashMap<String, Object>();
-                map.put("id", m.getId());
-                map.put("ItemContext", m.getJcontext());
-                Log.i("tag", m.getJcontext());
-                list.add(map);
+                if (m.getJdate().equals(today_sdr) || m.getJleibie() == 0) {
+                    map.put("id", m.getId());
+                    map.put("Jleibie", m.getJleibie());
+                    map.put("Wanchen","未完成");
+                    map.put("ItemContext", m.getJcontext());
+                    Log.i("tag", m.getJcontext());
+                    Log.i("tag", m.getJdate());
+                    Log.i("tag", +m.getJleibie() + "");
+                    learnlist.add(map);
+                }
             }
         }
-        return list;
+        return learnlist;
     }
+    public List<Map<String, Object>> getLifeData(int i) {
+        lifelist = new ArrayList<Map<String, Object>>();
+        Log.i("tag", "getJdate()");
+        DBManger dbManager = new DBManger(getActivity());
+        if (i == 1) {
+            Log.i("tag", "m.getJdate()");
+            List<jihuaitem> Yestlist = dbManager.listAllJ();
+            for (jihuaitem n : Yestlist) {
+                Map<String, Object> Map = new HashMap<String, Object>();
+                if(n.getJdate().equals(today_sdr)||n.getJleibie()==1){
+
+                    Map.put("id", n.getId());
+                    Map.put("Jleibie", n.getJleibie());
+                    Map.put("Wanchen","未完成");
+                    Map.put("ItemContext", n.getJcontext());
+                    Log.i("tag", n.getJcontext());
+                lifelist.add(Map);}
+
+        }}
+
+        return lifelist;}
+
 
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -113,17 +132,17 @@ public class jihua extends Fragment  {
             }
         });
 
-        listViewLearn.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
+       listViewLearn.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, final int position, long l) {
                 AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
-                builder.setTitle("提示").setMessage("请确认是否删除当前计划").setPositiveButton("是", new DialogInterface.OnClickListener() {
+                builder.setTitle("提示").setMessage("请确认是否设置已完成计划").setPositiveButton("是", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        list.remove(position);
-                        Map<String, Object> map=list.get(position-1);
-                        int M=Integer.parseInt(map.get("id").toString());
+                        learnlist.remove(position);
                         Learnadapter.notifyDataSetChanged();
+                        Map<String ,String> map= (Map<String, String>)listViewLearn.getItemAtPosition(position);
+                        int M=Integer.parseInt(map.get("id").toString());
+                        Log.i("g", ""+position);
                         DBManger dbManager=new DBManger(getActivity());
                         dbManager.deleteJ(M);
                     }
@@ -135,13 +154,14 @@ public class jihua extends Fragment  {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, final int position, long l) {
                 AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
-                builder.setTitle("提示").setMessage("请确认是否删除当前计划").setPositiveButton("是", new DialogInterface.OnClickListener() {
+                builder.setTitle("提示").setMessage("请确认是否设置已完成计划").setPositiveButton("是", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        list.remove(position);
-                        Map<String, Object> map=list.get(position-1);
+                        lifelist.remove(position);
+                        Lifeadapter.notifyDataSetChanged();
+                        Map<String ,String> map= (Map<String, String>)listViewLife.getItemAtPosition(position);
                         int M=Integer.parseInt(map.get("id").toString());
-                        Learnadapter.notifyDataSetChanged();
+                        Log.i("t", ""+position+map.get("ItemContext"));
                         DBManger dbManager=new DBManger(getActivity());
                         dbManager.deleteJ(M);
                     }
@@ -149,5 +169,7 @@ public class jihua extends Fragment  {
                 builder.create().show();
             }
         });
+
+
     }
 }

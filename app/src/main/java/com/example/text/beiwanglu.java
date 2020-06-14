@@ -16,9 +16,15 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import org.xutils.DbManager;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +40,7 @@ public class beiwanglu extends Fragment  {
     public ListView listView;
     bAdapter adapter;
     List<Map<String, Object>> list;
+    String today_sdr;
     public beiwanglu() {
         // Required empty public constructor
     }
@@ -50,6 +57,9 @@ public class beiwanglu extends Fragment  {
         listView.setEmptyView(view.findViewById(R.id.nodata));
         adapter=new bAdapter(getActivity(),R.layout.fragment_beiwanglu2,list);
         listView.setAdapter(adapter);
+        Date today= Calendar.getInstance().getTime();
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy_MM_dd");
+        today_sdr=sdf.format(today);
         return view;
     }
 
@@ -57,6 +67,27 @@ public class beiwanglu extends Fragment  {
     public void onResume() {
         super.onResume();
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        DBManger dbManager=new DBManger(getActivity());
+        List<beiwangluitem> testlist=dbManager.listAllB();
+        Log.i("tag",today_sdr);
+        for(beiwangluitem i:testlist) {
+            Log.i("tag",i.getBdate());
+            if(i.getBdate().equals(today_sdr)) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("提示").setMessage("您有一个备忘录待完成" + i.getBdate() + "-" + i.getBcontext()).setPositiveButton("知道了", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Log.i("tag", "i.getBdate()");
+                    }
+                }).setNegativeButton(null, null);
+                builder.create().show();
+
+            }}
     }
 
     public List<Map<String, Object>> getData(){
@@ -87,17 +118,19 @@ public class beiwanglu extends Fragment  {
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, final int position, long l) {
+            public void onItemClick(AdapterView<?> adapterView, final View view, final int position, long l) {
                 AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
                 builder.setTitle("提示").setMessage("请确认是否删除当前备忘录").setPositiveButton("是", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         list.remove(position);
-                        Map<String, Object> map=list.get(position);
-                        int M=Integer.parseInt(map.get("id").toString());
+                        Map<String ,String> map= (Map<String, String>)listView.getItemAtPosition(position);
+                        String B=map.get("ItemBeizhu");
+                        TextView title = view.findViewById(R.id.beizhu);
+                        String Bx=String.valueOf(title.getText());
                         adapter.notifyDataSetChanged();
                         DBManger dbManager=new DBManger(getActivity());
-                        dbManager.deleteB(M);
+                        dbManager.deleteB(Bx);
                     }
                 }).setNegativeButton("否",null);
                 builder.create().show();

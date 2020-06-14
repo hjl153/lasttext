@@ -52,4 +52,9 @@
     <string name="nodata">没有数据</string>
     <string name="putbeiwang">请输入备忘录内容</string>
     <string name="seebei">刷新备忘录</string>
+    <string name="nicheng">昵称</string>
+    <string name="putin">请前往我的资料修改昵称</string>
+    <string name="users">用户</string>
+    <string name="wu">无</string>
+    <string name="ddtime">我的打卡时长</string>
 </resources>

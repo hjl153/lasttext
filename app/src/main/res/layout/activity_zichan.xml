@@ -13,10 +13,10 @@
         android:layout_height="121dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="20dp"
-        app:srcCompat="@mipmap/ic_launcher_round" />
+        app:srcCompat="@mipmap/c" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -38,16 +38,6 @@
         android:layout_toEndOf="@+id/imageView"
         android:backgroundTint="@color/colorPrimary"
         app:srcCompat="@android:drawable/checkbox_on_background" />
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp"
-        android:background="@color/colorPrimary"
-        android:text="@string/seezhangdan" />
 
     <TextView
         android:id="@+id/textView16"
@@ -80,39 +70,37 @@
         android:textSize="30sp" />
 
     <TextView
-        android:id="@+id/textView18"
-        android:layout_width="wrap_content"
+        android:id="@+id/allmoney"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="231dp"
         android:layout_marginBottom="500dp"
         android:layout_toEndOf="@+id/textView16"
+        android:text="@string/wu"
+        android:textColor="@android:color/background_light"
         android:textSize="30sp" />
 
     <TextView
-        android:id="@+id/textView20"
-        android:layout_width="wrap_content"
+        android:id="@+id/monthmoney"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="231dp"
         android:layout_marginBottom="430dp"
         android:layout_toEndOf="@+id/textView16"
+        android:text="@string/wu"
+        android:textColor="@android:color/background_light"
         android:textSize="30sp" />
 
     <TextView
-        android:id="@+id/textView22"
-        android:layout_width="wrap_content"
+        android:id="@+id/lastmoney"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="231dp"
+        android:layout_marginStart="20dp"
         android:layout_marginBottom="360dp"
-        android:layout_toEndOf="@+id/textView16"
+        android:layout_toEndOf="@+id/textView21"
+        android:text="@string/wu"
+        android:textColor="@android:color/background_light"
         android:textSize="30sp" />
 
     <TextView
@@ -126,7 +114,7 @@
         android:textSize="30sp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/amont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -135,7 +123,7 @@
         android:layout_toEndOf="@+id/textView23"
         android:ems="10"
         android:hint="@string/shfshangxian"
-        android:inputType="text|numberDecimal" />
+        android:inputType="text|numberDecimal"/>
 
     <Button
         android:id="@+id/button4"
@@ -146,6 +134,7 @@
         android:layout_marginEnd="192dp"
         android:layout_marginBottom="216dp"
         android:backgroundTint="@color/colorPrimary"
+        android:onClick="onClick"
         android:text="@string/input" />
 
 

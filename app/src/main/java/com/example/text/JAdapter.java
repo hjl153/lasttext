@@ -25,7 +25,7 @@ public class JAdapter extends ArrayAdapter {
         }
         Map<String,String> map= (Map<String, String>) getItem(position);
         TextView beizhu=itemView.findViewById(R.id.context);
-        beizhu.setText(map.get("JCONTEXT"));
+        beizhu.setText(map.get("ItemContext"));
         return itemView;
     }
 

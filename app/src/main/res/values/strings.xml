@@ -53,4 +53,10 @@
     <string name="nodata">nodata</string>
     <string name="seebei">seebei</string>
     <string name="putbeiwang">putbeiwanglu</string>
+    <string name="users">users</string>
+    <string name="nicheng">nicheng</string>
+    <string name="putin">putin</string>
+
+    <string name="wu">wu</string>
+    <string name="ddtime">ddtime</string>
 </resources>
