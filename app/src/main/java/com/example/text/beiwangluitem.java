@@ -6,6 +6,7 @@ public class beiwangluitem {
     private String Bcontext;
     public beiwangluitem() {
         super();
+        this.id=0;
         this.Bdate = "";
         this.Bcontext = "";
     }

@@ -22,12 +22,12 @@ public class DBManger {
         BTB_NAME = DBHelper.BTB_NAME;
         MTB_NAME = DBHelper.MTB_NAME;
     }
-
     public void add(Useritem item){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("UserName", item.getUserName());
         values.put("Password", item.getPassword());
+        values.put("COUNT", item.getCount());
         db.insert(TBNAME, null, values);
         db.close();
     }
@@ -37,6 +37,7 @@ public class DBManger {
         values.put("JDATE", item.getJdate());
         values.put("JCONTEXT", item.getJcontext());
         values.put("JLEIBIE", item.getJleibie());
+        values.put("JZHUANGTAI", item.getJzhuangtai());
         db.insert(JTB_NAME, null, values);
         db.close();
     }
@@ -56,7 +57,7 @@ public class DBManger {
         values.put("MPRICE", item.getMprice());
         values.put("SHULIANG", item.getShuliang());
         values.put("MLEIBIE", item.getMleibie());
-        values.put("ZHUSHI", item.getZhushui());
+        values.put("ZHUSHI", item.getZhushi());
         values.put("MTYPE", item.getMtype());
         db.insert(MTB_NAME, null, values);
         db.close();
@@ -83,23 +84,19 @@ public class DBManger {
         db.delete(TBNAME, "ID=?", new String[]{String.valueOf(id)});
         db.close();
     }
-    public void deleteB(String beizhu){
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.delete(BTB_NAME, "BCONTEXT=?", new String[]{String.valueOf(beizhu)});
-        db.close();
-    }
-    public void deleteJ(int id){
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.delete(JTB_NAME, "ID=?", new String[]{String.valueOf(id)});
-        db.close();
-    }
 
-    public void update(Useritem item){
+    public void update(int item,String name){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("UserName", item.getUserName());
-        values.put("Passsword", item.getPassword());
-        db.update(TBNAME, values, "ID=?", new String[]{String.valueOf(item.getId())});
+        values.put("Count", item);
+        db.update(TBNAME, values, "Username=?", new String[]{String.valueOf(name)});
+        db.close();
+    }
+    public void updateJ(int ite,String name){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("Jzhuangtai", ite);
+        db.update(JTB_NAME, values, "Jcontext=?", new String[]{String.valueOf(name)});
         db.close();
     }
 
@@ -154,6 +151,7 @@ public class DBManger {
                 item.setJdate(cursor.getString(cursor.getColumnIndex("JDATE")));
                 item.setJcontext(cursor.getString(cursor.getColumnIndex("JCONTEXT")));
                 item.setJleibie(cursor.getInt(cursor.getColumnIndex("JLEIBIE")));
+                item.setJzhuangtai(cursor.getInt(cursor.getColumnIndex("JZHUANGTAI")));
                 JList.add(item);
             }
             cursor.close();
@@ -182,6 +180,30 @@ public class DBManger {
         return JList;
 
     }
+    public List<jizhangitem> listAllZ(){
+        List<jizhangitem> ZList = null;
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(MTB_NAME, null, null, null, null, null, null);
+        if(cursor!=null){
+            ZList = new ArrayList<jizhangitem>();
+            while(cursor.moveToNext()){
+                jizhangitem item = new jizhangitem();
+                item.setId(cursor.getInt(cursor.getColumnIndex("ID")));
+                item.setMname(cursor.getString(cursor.getColumnIndex("MNAME")));
+                item.setMdate(cursor.getString(cursor.getColumnIndex("MDATE")));
+                item.setMleibie(cursor.getString(cursor.getColumnIndex("MLEIBIE")));
+                item.setZhushi(cursor.getString(cursor.getColumnIndex("ZHUSHI")));
+                item.setMtype(cursor.getInt(cursor.getColumnIndex("MTYPE")));
+                item.setShuliang(cursor.getInt(cursor.getColumnIndex("SHULIANG")));
+                item.setMprice(cursor.getFloat(cursor.getColumnIndex("MPRICE")));
+                ZList.add(item);
+            }
+            cursor.close();
+        }
+        db.close();
+        return ZList;
+
+    }
     public Boolean findById(String name,String password){
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.query(TBNAME, null, "username=?", new String[]{String.valueOf(name)}, null, null, null);
@@ -194,6 +216,17 @@ public class DBManger {
         if(X1.equals(password)){
             return true;}
         return false;
+    }
+    public int findCount(String name){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(TBNAME, null, "username=?", new String[]{String.valueOf(name)}, null, null, null);
+        int X1=0;
+        if(cursor!=null && cursor.moveToFirst()){
+            X1=cursor.getInt(cursor.getColumnIndex("COUNT"));
+            cursor.close();
+        }
+        db.close();
+        return X1;
     }
 }
 

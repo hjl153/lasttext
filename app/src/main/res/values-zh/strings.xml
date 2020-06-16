@@ -57,4 +57,7 @@
     <string name="users">用户</string>
     <string name="wu">无</string>
     <string name="ddtime">我的打卡时长</string>
+    <string name="zhangdan">账单</string>
+    <string name="fenleizhang">分类账本</string>
+    <string name="jinchu">进出总账</string>
 </resources>

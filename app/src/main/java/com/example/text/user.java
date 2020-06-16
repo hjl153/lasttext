@@ -18,23 +18,20 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class user extends AppCompatActivity {
-    TextView username,niCheng;
-    String name,today_sdr,todaytime,Ni;
+    TextView username;
+    String name,today_sdr,todaytime;
     int count=0;
+    String tag="未打卡";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
         username=findViewById(R.id.username);
-        niCheng=findViewById(R.id.niCheng);
         SharedPreferences sp=getSharedPreferences("myname", Activity.MODE_PRIVATE);
         name=sp.getString("name","");
         username.setText(name);
         SharedPreferences Sp=getSharedPreferences("ddda", Activity.MODE_PRIVATE);
         todaytime=Sp.getString("time","");
-        SharedPreferences SP=getSharedPreferences("nichen", Activity.MODE_PRIVATE);
-        Ni=SP.getString("niChen","");
-        niCheng.setText(Ni);
     }
     public void onClick(View btn){
         if(btn.getId()==R.id.souce){
@@ -57,13 +54,11 @@ public class user extends AppCompatActivity {
             Date today= Calendar.getInstance().getTime();
             SimpleDateFormat sdf=new SimpleDateFormat("yyyy_MM_dd");
             today_sdr=sdf.format(today);
-            if(!todaytime.equals(today_sdr)){
+            if(!todaytime.equals(today_sdr)&&tag.equals("未打卡")){
                 count=count+1;
-                SharedPreferences sp=getSharedPreferences("ddda", Activity.MODE_PRIVATE);
-                SharedPreferences.Editor editor=sp.edit();
-                editor.putString("time",today_sdr);
-                editor.putInt("count",count);
-                editor.commit();
+                DBManger dbManager = new DBManger(this);
+                dbManager.update(count,name);
+                tag="已打卡";
                 Log.i("g", ""+count+todaytime+today_sdr);
                 Toast.makeText(this, "打卡成功", Toast.LENGTH_SHORT).show();
             }

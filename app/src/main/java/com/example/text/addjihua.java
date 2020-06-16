@@ -1,7 +1,9 @@
 package com.example.text;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,7 +20,7 @@ public class addjihua extends AppCompatActivity {
     EditText beizhu;
     RadioGroup plan1;
     String today_sdr;
-    int type;
+    int type,zhuangtai=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,12 @@ public class addjihua extends AppCompatActivity {
 
     public void onClick(View btn){
         String Beizhu=beizhu.getText().toString();
+        if(btn.getId()==R.id.back4) {
+            Intent intent=new Intent(addjihua.this,zhuyeActivity.class);
+            intent.putExtra("id",1);
+            startActivityForResult(intent,0);
+            finish();
+        }
         if(btn.getId()==R.id.tijiao) {
             if (Beizhu.length() <= 0) {
                 Toast.makeText(this, "请输入计划内容", Toast.LENGTH_SHORT).show();
@@ -54,12 +62,17 @@ public class addjihua extends AppCompatActivity {
                         }
 
                 DBManger dbManager = new DBManger(addjihua.this);
-                jihuaitem jhua=new jihuaitem(today_sdr,Beizhu,type);
+                jihuaitem jhua=new jihuaitem(today_sdr,Beizhu,type,zhuangtai);
                 dbManager.addJ(jhua);
                 Log.i("tag", today_sdr);
+                        Log.i("tag", ""+zhuangtai);
                 Log.i("tag", Beizhu);
                     Log.i("tag", +type+"");
-                Toast.makeText(this, "提交完成", Toast.LENGTH_SHORT).show();}
+                Toast.makeText(this, "提交完成", Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(addjihua.this,zhuyeActivity.class);
+                        intent.putExtra("id",1);
+                        startActivityForResult(intent,0);
+                    finish();}
             }
 
         }

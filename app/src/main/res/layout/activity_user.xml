@@ -86,28 +86,4 @@
       android:onClick="onClick"
       app:srcCompat="@android:drawable/checkbox_on_background"/>
 
-    <TextView
-        android:id="@+id/ni"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="122dp"
-        android:layout_marginBottom="548dp"
-        android:text="@string/nicheng"
-        android:textColor="@android:color/background_light"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/niCheng"
-        android:layout_width="66dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="18dp"
-        android:layout_marginBottom="553dp"
-        android:hint="@string/wu"
-        android:textColor="@android:color/background_light"
-        android:textSize="24sp" />
-
 </RelativeLayout>

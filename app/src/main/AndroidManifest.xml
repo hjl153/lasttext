@@ -12,7 +12,15 @@
         android:roundIcon="@mipmap/o"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".plan" android:theme="@style/Theme.AppCompat.Dialog"></activity>
+        <activity android:name=".zhangfenglei"></activity>
+        <activity
+            android:name=".zhangdetail"
+            android:theme="@style/Theme.AppCompat.Light.Dialog" />
+        <activity android:name=".jizhanglist" />
+        <activity android:name=".seezhangdan" />
+        <activity
+            android:name=".plan"
+            android:theme="@style/Theme.AppCompat.Dialog" />
         <activity android:name=".jihualist" />
         <activity android:name=".beiwanglist" />
         <activity android:name=".addbeiwanglu" />

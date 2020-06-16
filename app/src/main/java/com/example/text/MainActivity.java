@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 if (dbManager.findById(Name, Password)) {
                     Intent config = new Intent(this, zhuyeActivity.class);
                     startActivity(config);
+                    finish();
                 } else {
                     Toast.makeText(this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
                 }

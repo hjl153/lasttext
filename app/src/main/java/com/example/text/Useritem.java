@@ -4,6 +4,15 @@ public class Useritem {
     private int id;
     private String UserName;
     private String Password;
+    private int Count;
+
+    public int getCount() {
+        return Count;
+    }
+
+    public void setCount(int count) {
+        Count = count;
+    }
 
     public int getId() {
         return id;
@@ -33,11 +42,13 @@ public class Useritem {
         super();
         this.UserName = "";
         this.Password = "";
+        this.Count=0;
     }
 
-    public Useritem(String UserName, String Password) {
+    public Useritem(String UserName, String Password,int count) {
         super();
         this.UserName = UserName;
         this.Password = Password;
+        this.Count=count;
     }
 }

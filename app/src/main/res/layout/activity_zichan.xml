@@ -28,17 +28,6 @@
         android:textColor="@android:color/background_light"
         android:textSize="24sp" />
 
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="101dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="42dp"
-        android:layout_marginBottom="583dp"
-        android:layout_toEndOf="@+id/imageView"
-        android:backgroundTint="@color/colorPrimary"
-        app:srcCompat="@android:drawable/checkbox_on_background" />
-
     <TextView
         android:id="@+id/textView16"
         android:layout_width="wrap_content"

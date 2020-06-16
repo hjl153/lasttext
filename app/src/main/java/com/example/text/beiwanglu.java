@@ -28,6 +28,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
@@ -112,28 +113,8 @@ public class beiwanglu extends Fragment  {
 
                 Intent config = new Intent(getActivity(), addbeiwanglu.class);
                 startActivity(config);
+                getActivity().finish();
 
-            }
-        });
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, final View view, final int position, long l) {
-                AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
-                builder.setTitle("提示").setMessage("请确认是否删除当前备忘录").setPositiveButton("是", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        list.remove(position);
-                        Map<String ,String> map= (Map<String, String>)listView.getItemAtPosition(position);
-                        String B=map.get("ItemBeizhu");
-                        TextView title = view.findViewById(R.id.beizhu);
-                        String Bx=String.valueOf(title.getText());
-                        adapter.notifyDataSetChanged();
-                        DBManger dbManager=new DBManger(getActivity());
-                        dbManager.deleteB(Bx);
-                    }
-                }).setNegativeButton("否",null);
-                builder.create().show();
             }
         });
 }

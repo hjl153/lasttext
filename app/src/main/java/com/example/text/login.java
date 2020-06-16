@@ -14,6 +14,7 @@ public class login extends AppCompatActivity {
     EditText zpassword;
     EditText agpassword;
     String TAG;
+    int count=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +45,7 @@ public class login extends AppCompatActivity {
                     Toast.makeText(this, "密码不一致", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    dbManager.add(new Useritem(Name,Password));
+                    dbManager.add(new Useritem(Name,Password,count));
                     Log.i(TAG, "写入数据完毕" );
                     Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show();
                 }

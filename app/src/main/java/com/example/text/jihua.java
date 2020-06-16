@@ -38,6 +38,7 @@ public class jihua extends Fragment  {
     JAdapter Learnadapter,Lifeadapter;
     List<Map<String, Object>> learnlist,lifelist;
     String today_sdr;
+    int jm=0;
     public jihua() {
         // Required empty public constructor
     }
@@ -85,7 +86,10 @@ public class jihua extends Fragment  {
                 if (m.getJdate().equals(today_sdr) || m.getJleibie() == 0) {
                     map.put("id", m.getId());
                     map.put("Jleibie", m.getJleibie());
-                    map.put("Wanchen","未完成");
+                    if(m.getJzhuangtai()==0){
+                        map.put("ItemZhuangtai","未完成");}
+                    else if(m.getJzhuangtai()==1){
+                        map.put("ItemZhuangtai","已完成");}
                     map.put("ItemContext", m.getJcontext());
                     Log.i("tag", m.getJcontext());
                     Log.i("tag", m.getJdate());
@@ -109,9 +113,14 @@ public class jihua extends Fragment  {
 
                     Map.put("id", n.getId());
                     Map.put("Jleibie", n.getJleibie());
-                    Map.put("Wanchen","未完成");
+                    if(n.getJzhuangtai()==0){
+                    Map.put("ItemZhuangtai","未完成");}
+                    else if(n.getJzhuangtai()==1){
+                        Map.put("ItemZhuangtai","已完成");
+                    }
                     Map.put("ItemContext", n.getJcontext());
                     Log.i("tag", n.getJcontext());
+                    Log.i("tg", ""+n.getJzhuangtai());
                 lifelist.add(Map);}
 
         }}
@@ -128,45 +137,74 @@ public class jihua extends Fragment  {
 
                 Intent config = new Intent(getActivity(), addjihua.class);
                 startActivity(config);
+                getActivity().finish();
 
             }
         });
 
        listViewLearn.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, final int position, long l) {
+                if (jm != 1) {
                 AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
                 builder.setTitle("提示").setMessage("请确认是否设置已完成计划").setPositiveButton("是", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        learnlist.remove(position);
-                        Learnadapter.notifyDataSetChanged();
-                        Map<String ,String> map= (Map<String, String>)listViewLearn.getItemAtPosition(position);
-                        int M=Integer.parseInt(map.get("id").toString());
-                        Log.i("g", ""+position);
                         DBManger dbManager=new DBManger(getActivity());
-                        dbManager.deleteJ(M);
+
+
+                        if(position==listViewLearn.getCount()-1){
+                            jm=jm+1;
+                            Map<String ,String> map= (Map<String, String>)listViewLearn.getItemAtPosition(listViewLearn.getCount()-1);
+                            dbManager.updateJ(jm,map.get("ItemContext"));
+                            Log.i("tag",""+map.get("ItemContext"));
+                        }
+                        else{
+                            Map<String ,String> map= (Map<String, String>)listViewLearn.getItemAtPosition(position);
+                            String M=map.get("ItemContext").toString();
+                            jm=jm+1;
+                            Log.i("jxjncag",""+M);
+                            if(M.equals("8尊")){
+                                Log.i("ncag",""+M);
+                            }
+                        dbManager.updateJ(jm,M);
+                            Log.i("tag",""+M);}
                     }
                 }).setNegativeButton("否",null);
                 builder.create().show();
-            }
+            }}
         });
         listViewLife.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, final int position, long l) {
+                if (jm != 1) {
                 AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
                 builder.setTitle("提示").setMessage("请确认是否设置已完成计划").setPositiveButton("是", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        lifelist.remove(position);
-                        Lifeadapter.notifyDataSetChanged();
-                        Map<String ,String> map= (Map<String, String>)listViewLife.getItemAtPosition(position);
-                        int M=Integer.parseInt(map.get("id").toString());
-                        Log.i("t", ""+position+map.get("ItemContext"));
                         DBManger dbManager=new DBManger(getActivity());
-                        dbManager.deleteJ(M);
+                        if(position==listViewLife.getCount()-1){
+                            jm=jm+1;
+                            Map<String ,String> map= (Map<String, String>)listViewLife.getItemAtPosition(listViewLife.getCount()-1);
+                            dbManager.updateJ(jm,map.get("ItemContext"));
+                            Log.i("tag",""+position);
+                        }
+                        else{
+                            jm=jm+1;
+                            Map<String ,String> map= (Map<String, String>)listViewLife.getItemAtPosition(position);
+                            String M=map.get("ItemContext").toString();
+                            dbManager.updateJ(jm,M);
+                            Log.i("tag",""+M);}
+                        Intent intent=new Intent(getActivity(),zhuyeActivity.class);
+                        intent.putExtra("id",1);
+                        startActivityForResult(intent,0);
+                        getActivity().finish();
                     }
+
                 }).setNegativeButton("否",null);
                 builder.create().show();
+            }
+
+
             }
         });
 

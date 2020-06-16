@@ -4,20 +4,25 @@ public class jihuaitem {
     private int id;
     private String Jdate;
     private int Jleibie;
+    private int Jzhuangtai;
     private String Jcontext;
 
-
+    public int getJzhuangtai() {
+        return Jzhuangtai;
+    }
     public jihuaitem() {
         super();
+        this.Jzhuangtai=0;
         this.Jdate = "";
         this.Jcontext = "";
     }
 
-    public jihuaitem(String jdate,String jcontext,int jleibie) {
+    public jihuaitem(String jdate,String jcontext,int jleibie,int jzhuangtai) {
         super();
         this.Jdate = jdate;
         this.Jleibie = jleibie;
         this.Jcontext = jcontext;
+        this.Jzhuangtai=jzhuangtai;
     }
 
     public int getId() {
@@ -50,6 +55,9 @@ public class jihuaitem {
 
     public void setJcontext(String jcontext) {
         Jcontext = jcontext;
+    }
+    public void setJzhuangtai(int jzhuangtai) {
+        Jzhuangtai = jzhuangtai;
     }
 }
 

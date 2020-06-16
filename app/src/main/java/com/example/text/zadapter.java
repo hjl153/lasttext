@@ -9,26 +9,29 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.example.text.R;
+
 import java.util.List;
 import java.util.Map;
 
-public class JAdapter extends ArrayAdapter {
-    public JAdapter(@NonNull Context context, int resource, List<Map<String, Object>>  list) {
+public class zadapter extends ArrayAdapter {
+    public zadapter(@NonNull Context context, int resource, List<Map<String, Object>> list) {
         super(context, resource,list);
     }
     public View getView(int position, View contentView, ViewGroup parent){
         View itemView=contentView;
         if(itemView==null){
-            itemView= LayoutInflater.from(getContext()).inflate(R.layout.activity_jihualist,parent,false);
+            itemView= LayoutInflater.from(getContext()).inflate(R.layout.activity_jizhanglist,parent,false);
         }
         Map<String,String> map= (Map<String, String>) getItem(position);
-        TextView beizhu=itemView.findViewById(R.id.context);
-        TextView zhuangtai=itemView.findViewById(R.id.zhuangtai);
-        beizhu.setText(map.get("ItemContext"));
-        zhuangtai.setText(map.get("ItemZhuangtai"));
+        TextView money=itemView.findViewById(R.id.money);
+        TextView detail=itemView.findViewById(R.id.detail);
+        TextView time=itemView.findViewById(R.id.time);
+        money.setText(String.valueOf(map.get("ItemMoney")));
+        time.setText(map.get("ItemTime"));
+        detail.setText(map.get("ItemDetail"));
         return itemView;
     }
 
 }
+

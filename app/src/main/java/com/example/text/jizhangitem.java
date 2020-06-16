@@ -7,7 +7,7 @@ public class jizhangitem {
     private float Mprice;
     private int Shuliang;
     private String Mleibie;
-    private String Zhushui;
+    private String Zhushi;
     private int Mtype;
     public jizhangitem() {
         super();
@@ -16,17 +16,17 @@ public class jizhangitem {
         this.Mprice = 0.0f;
         this.Shuliang = 0;
         this.Mleibie = "";
-        this.Zhushui = "";
+        this.Zhushi = "";
         this.Mtype = 0;
     }
-    public jizhangitem( String mname, String mdate, float mprice, int shuliang, String mleibie, String zhushui, int mtype) {
+    public jizhangitem( String mname, String mdate, float mprice, int shuliang, String mleibie, String zhushi, int mtype) {
         this.id = id;
         Mname = mname;
         Mdate = mdate;
         Mprice = mprice;
         Shuliang = shuliang;
         Mleibie = mleibie;
-        Zhushui = zhushui;
+        Zhushi = zhushi;
         Mtype = mtype;
     }
 
@@ -78,12 +78,12 @@ public class jizhangitem {
         Mleibie = mleibie;
     }
 
-    public String getZhushui() {
-        return Zhushui;
+    public String getZhushi() {
+        return Zhushi;
     }
 
-    public void setZhushui(String zhushui) {
-        Zhushui = zhushui;
+    public void setZhushi(String zhushi) {
+        Zhushi = zhushi;
     }
 
     public int getMtype() {
